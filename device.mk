@@ -246,6 +246,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
 
+# overwrite product specific build properties
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=volantis \
+    BUILD_DISPLAY_ID="BSZAospLp-v1.2.2" \
+    BUILD_FINGERPRINT="google/volantis/flounder:5.1.1/LMY48M/2167285:user/release-keys" \
+    PRIVATE_BUILD_DESC="volantis-user 5.1.1 LMY48M 2167285 release-keys"
+
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)
 $(call inherit-product-if-exists, vendor/htc/flounder/device-vendor.mk)
