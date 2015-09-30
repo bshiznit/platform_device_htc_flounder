@@ -20,17 +20,15 @@ PRODUCT_PACKAGES := \
     wpa_supplicant \
     wpa_supplicant.conf
 
-#ifeq ($(TARGET_PREBUILT_KERNEL),)
-#ifeq ($(USE_SVELTE_KERNEL), true)
-#LOCAL_KERNEL := device/htc/flounder_svelte-kernel/Image.gz-dtb
-#else
-#LOCAL_KERNEL := device/htc/flounder-kernel/Image.gz-dtb
-#endif # USE_SVELTE_KERNEL
-#else
-#LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-#endif
-
-LOCAL_KERNEL := kernel/tegra/arch/arm64/boot/Image.gz-dtb
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(USE_SVELTE_KERNEL), true)
+LOCAL_KERNEL := device/htc/flounder_svelte-kernel/Image.gz-dtb
+else
+LOCAL_KERNEL := device/htc/flounder-kernel/Image.gz-dtb
+endif # USE_SVELTE_KERNEL
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
 
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
 
@@ -253,7 +251,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapgrowthlimit=256m \
-	dalvik.vm.dex2oat-filter=everything \
+    dalvik.vm.dex2oat-filter=everything \
     dalvik.vm.image-dex2oat-filter=everything \
     dalvik.vm.dex2oat-flags="--compiler-filter=interpret-only" \
     dalvik.vm.image-dex2oat-flags=""
@@ -288,7 +286,7 @@ PRODUCT_PACKAGES += \
 
 # for keyboard key mappings
 PRODUCT_PACKAGES += \
-	VolantisKeyboard
+    VolantisKeyboard
 
 # for launcher layout
 PRODUCT_PACKAGES += \
