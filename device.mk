@@ -296,6 +296,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.enable_boot_charger_mode=1
 
+# overwrite product specific build properties
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=volantis \
+    BUILD_DISPLAY_ID="BSZAospLp-$(BUILD_ID)-v1.2.4"
+
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)
 $(call inherit-product-if-exists, vendor/htc/flounder/device-vendor.mk)
