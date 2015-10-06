@@ -221,7 +221,37 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.bt.bdaddr_path=/sys/module/flounder_bdaddress/parameters/bdaddress \
     ro.frp.pst=/dev/block/platform/sdhci-tegra.3/by-name/PST \
     ro.ril.def.agps.mode=1 \
-    persist.tegra.compositor=glcomposer
+    persist.tegra.compositor=glcomposer \
+    ro.com.android.dataroaming=false \
+    ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
+    ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.com.google.clientidbase=android-google \
+    ro.com.android.wifi-watchlist=GoogleGuest \
+    ro.error.receiver.system.apps=com.google.android.gms \
+    ro.setupwizard.enterprise_mode=1 \
+    ro.setupwizard.require_network=any \
+    keyguard.no_require_sim=true \
+    ro.facelock.black_timeout=700 \
+    ro.facelock.det_timeout=1500 \
+    ro.facelock.rec_timeout=2500 \
+    ro.facelock.lively_timeout=2500 \
+    ro.facelock.est_max_time=500 \
+    ro.facelock.use_intro_anim=true \
+    camera.flash_off=0 \
+    drm.service.enabled=true \
+    ro.com.widevine.cachesize=16777216 \
+    fmas.spkr_6ch=35,20,110 \
+    fmas.spkr_2ch=35,25 \
+    fmas.spkr_angles=10 \
+    fmas.spkr_sgain=0 \
+    media.aac_51_output_enabled=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.dex2oat-filter=everything \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.dex2oat-flags="--compiler-filter=interpret-only" \
+    dalvik.vm.image-dex2oat-flags=""
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
@@ -285,6 +315,11 @@ PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/VNR
 PRODUCT_PACKAGES += \
     slideshow \
     verity_warning_images
+
+# overwrite product specific build properties
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=volantis \
+    BUILD_DISPLAY_ID="MelloShmallow-$(BUILD_ID)-v0.10"
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)
