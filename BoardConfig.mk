@@ -93,8 +93,32 @@ WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 
 BOARD_SEPOLICY_DIRS += device/htc/flounder/sepolicy
+BOARD_SEPOLICY_UNION := \
+	bluetooth.te \
+	device.te \
+	drmserver.te \
+	file.te \
+	file_contexts \
+	genfs_contexts \
+	gpsd.te \
+	init.te \
+	kernel.te \
+	kickstart.te \
+	mac_permissions.xml \
+	mediaserver.te \
+	netd.te \
+	netmgrd.te \
+	qmuxd.te \
+	radio.te \
+	rild.te \
+	surfaceflinger.te \
+	system_server.te \
+	tee.te \
+	te_macros \
+	touch_fusion.te
 
 TARGET_USES_64_BIT_BCMDHD := true
+
 TARGET_USES_64_BIT_BINDER := true
 
 TARGET_USES_LOGD := true
