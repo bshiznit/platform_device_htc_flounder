@@ -300,14 +300,14 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/APP
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/VNR
 
 # for warning
-PRODUCT_PACKAGES += \
-    slideshow \
-    verity_warning_images
+# PRODUCT_PACKAGES += \
+#    slideshow \
+#    verity_warning_images
 
 # overwrite product specific build properties
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=volantis \
-    BUILD_DISPLAY_ID="MelloShmallow-$(BUILD_ID)-v0.11"
+    BUILD_DISPLAY_ID="MelloShmallow-$(BUILD_ID)-v0.12"
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)
