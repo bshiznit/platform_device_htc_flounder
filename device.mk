@@ -49,6 +49,7 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/init.flounder.usb.rc:root/init.flounder.usb.rc \
     $(LOCAL_PATH)/init.recovery.flounder.rc:root/init.recovery.flounder.rc \
     $(LOCAL_FSTAB):root/fstab.flounder \
+    root/sepolicy:root/sepolicy \
     $(LOCAL_PATH)/ueventd.flounder.rc:root/ueventd.flounder.rc
 
 # Copy flounder files as flounder64 so that ${ro.hardware} can find them
@@ -199,7 +200,17 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    fsck.f2fs mkfs.f2fs
+    e2fsck \
+    mke2fs \
+    tune2fs \
+    mkfs.exfat \
+    fsck.exfat \
+    mount.exfat \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
+    ntfsfix \
+    ntfs-3g
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
