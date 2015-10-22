@@ -49,7 +49,6 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_PATH)/init.flounder.usb.rc:root/init.flounder.usb.rc \
     $(LOCAL_PATH)/init.recovery.flounder.rc:root/init.recovery.flounder.rc \
     $(LOCAL_FSTAB):root/fstab.flounder \
-    root/sepolicy:root/sepolicy \
     $(LOCAL_PATH)/ueventd.flounder.rc:root/ueventd.flounder.rc
 
 # Copy flounder files as flounder64 so that ${ro.hardware} can find them
@@ -318,7 +317,7 @@ PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/VNR
 # overwrite product specific build properties
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=volantis \
-    BUILD_DISPLAY_ID="MelloShmallow-$(BUILD_ID)-v0.12"
+    BUILD_DISPLAY_ID="MelloShmallow-$(BUILD_ID)-v0.13"
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)
