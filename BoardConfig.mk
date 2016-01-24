@@ -34,7 +34,7 @@ BUILD_EMULATOR := false
 
 TARGET_NO_BOOTLOADER := true
 
-BOARD_KERNEL_CMDLINE += androidboot.hardware=flounder
+BOARD_KERNEL_CMDLINE += androidboot.hardware=flounder androidboot.selinux=permissive
 
 TARGET_NO_RADIOIMAGE := true
 
@@ -131,3 +131,10 @@ MALLOC_IMPL := dlmalloc
 
 # Use the non-open-source parts, if they're present
 -include vendor/htc/flounder/BoardConfigVendor.mk
+
+# Inline kernel building
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-5.2-kernel-uber/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_SOURCE := kernel/htc/flounder
+TARGET_KERNEL_CONFIG := deso_defconfig
+BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
