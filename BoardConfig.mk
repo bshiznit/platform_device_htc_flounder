@@ -133,8 +133,13 @@ MALLOC_IMPL := dlmalloc
 -include vendor/htc/flounder/BoardConfigVendor.mk
 
 # Inline kernel building
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-5.2-kernel-uber/bin
-KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/htc/flounder
 TARGET_KERNEL_CONFIG := deso_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+
+# Kernel Toolchain
+TARGET_GCC_VERSION_ARM := 5.2-kernel-uber
+TARGET_GCC_VERSION_ARM64 := 5.2-kernel-uber
+
+# ROM Toolchain
+TARGET_GCC_VERSION_EXP := 4.9-uber
