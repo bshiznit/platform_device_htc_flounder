@@ -229,14 +229,15 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.error.receiver.system.apps=com.google.android.gms \
     ro.setupwizard.enterprise_mode=1 \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
+    ro.com.android.prov_mobiledata=false \
     ro.setupwizard.require_network=any \
     keyguard.no_require_sim=true \
     ro.facelock.black_timeout=700 \
-    ro.facelock.det_timeout=1500 \
-    ro.facelock.rec_timeout=2500 \
+    ro.facelock.det_timeout=2500 \
+    ro.facelock.rec_timeout=3500 \
     ro.facelock.lively_timeout=2500 \
     ro.facelock.est_max_time=500 \
-    ro.facelock.use_intro_anim=true \
     camera.flash_off=0 \
     drm.service.enabled=true \
     ro.com.widevine.cachesize=16777216 \
@@ -319,7 +320,7 @@ PRODUCT_PACKAGES += \
 # overwrite product specific build properties
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=volantis \
-    BUILD_DISPLAY_ID="MelloShmallow-$(BUILD_ID)-v0.10"
+    BUILD_DISPLAY_ID="Noougies-$(BUILD_ID)-v0.10"
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)
