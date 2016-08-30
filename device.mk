@@ -323,9 +323,9 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/APP
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/VNR
 
 # for warning
-PRODUCT_PACKAGES += \
-    slideshow \
-    verity_warning_images
+#PRODUCT_PACKAGES += \
+#    slideshow \
+#    verity_warning_images
 
 # overwrite product specific build properties
 PRODUCT_BUILD_PROP_OVERRIDES += \
