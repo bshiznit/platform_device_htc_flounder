@@ -38,7 +38,7 @@ TARGET_KERNEL_CONFIG := flounder_defconfig
 TARGET_KERNEL_SOURCE := kernel/tegra
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/aarch64-linux-android-4.9/bin
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 
 BOARD_KERNEL_CMDLINE += androidboot.hardware=flounder androidboot.selinux=permissive
 
