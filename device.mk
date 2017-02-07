@@ -21,13 +21,13 @@ PRODUCT_PACKAGES := \
     wpa_supplicant.conf
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-ifeq ($(USE_SVELTE_KERNEL), true)
+	ifeq ($(USE_SVELTE_KERNEL), true)
 LOCAL_KERNEL := device/htc/flounder_svelte-kernel/Image.gz-dtb
 else
-LOCAL_KERNEL := device/htc/flounder-kernel/Image.gz-dtb
+	LOCAL_KERNEL := device/htc/flounder-kernel/Image.gz-dtb
 endif # USE_SVELTE_KERNEL
 else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := f2fs
@@ -200,7 +200,17 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-    fsck.f2fs mkfs.f2fs
+    e2fsck \
+    mke2fs \
+    tune2fs \
+    mkfs.exfat \
+    fsck.exfat \
+    mount.exfat \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
+    ntfsfix \
+    ntfs-3g
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
@@ -221,7 +231,41 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.bt.bdaddr_path=/sys/module/flounder_bdaddress/parameters/bdaddress \
     ro.frp.pst=/dev/block/platform/sdhci-tegra.3/by-name/PST \
     ro.ril.def.agps.mode=1 \
-    persist.tegra.compositor=glcomposer
+    persist.tegra.compositor=glcomposer \
+    ro.com.android.dataroaming=false \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
+    ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
+    ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.com.google.clientidbase=android-google \
+    ro.com.android.wifi-watchlist=GoogleGuest \
+    ro.error.receiver.system.apps=com.google.android.gms \
+    ro.setupwizard.enterprise_mode=1 \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
+    ro.com.android.prov_mobiledata=false \
+    ro.setupwizard.require_network=any \
+    ro.setupwizard.mode=OPTIONAL \
+    ro.setupwizard.enable_bypass=1 \
+    keyguard.no_require_sim=true \
+    ro.facelock.black_timeout=700 \
+    ro.facelock.det_timeout=2500 \
+    ro.facelock.rec_timeout=3500 \
+    ro.facelock.lively_timeout=2500 \
+    ro.facelock.est_max_time=500 \
+    camera.flash_off=0 \
+    drm.service.enabled=true \
+    ro.com.widevine.cachesize=16777216 \
+    fmas.spkr_6ch=35,20,110 \
+    fmas.spkr_2ch=35,25 \
+    fmas.spkr_angles=10 \
+    fmas.spkr_sgain=0 \
+    media.aac_51_output_enabled=true
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.dex2oat-filter=everything \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.dex2oat-flags="--compiler-filter=interpret-only" \
+    dalvik.vm.image-dex2oat-flags=""
 
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
@@ -281,9 +325,14 @@ PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/APP
 PRODUCT_VENDOR_VERITY_PARTITION := /dev/block/platform/sdhci-tegra.3/by-name/VNR
 
 # for warning
-PRODUCT_PACKAGES += \
-    slideshow \
-    verity_warning_images
+#PRODUCT_PACKAGES += \
+#    slideshow \
+#    verity_warning_images
+
+# overwrite product specific build properties
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=volantis \
+    BUILD_DISPLAY_ID="Noougies-$(BUILD_ID)-v1.11.170106"
 
 $(call inherit-product-if-exists, hardware/nvidia/tegra132/tegra132.mk)
 $(call inherit-product-if-exists, vendor/nvidia/proprietary-tegra132/tegra132-vendor.mk)

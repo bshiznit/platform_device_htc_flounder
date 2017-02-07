@@ -34,7 +34,14 @@ BUILD_EMULATOR := false
 
 TARGET_NO_BOOTLOADER := true
 
-BOARD_KERNEL_CMDLINE += androidboot.hardware=flounder
+#TARGET_KERNEL_CONFIG := flounder_defconfig
+#TARGET_KERNEL_SOURCE := kernel/tegra
+#BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+#KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/toolchains/ubertc-4.9-kernel/bin
+
+BOARD_KERNEL_CMDLINE += androidboot.hardware=flounder androidboot.selinux=permissive
 
 TARGET_NO_RADIOIMAGE := true
 
@@ -51,6 +58,8 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2782920704
+# Disable journaling on system.img to save space/performace overhead.
+BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 # BOARD_USERDATAIMAGE_PARTITION_SIZE := 13287555072
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
